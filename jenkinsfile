@@ -19,7 +19,7 @@ pipeline{
         stage("build-client"){
             steps{
                 dir ("react-student-management-web-app"){
-                    sh "docker build . -t huyn29/student-app-client"
+                    sh "docker build -t huyn29/student-app-client ."
                 }
             }
         }
