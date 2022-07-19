@@ -1,0 +1,45 @@
+pipeline{
+    agent any
+    stages{
+        stage("git-commit"){
+            steps{
+                // get code from my github repo
+                git 'https://github.com/huyn29/level1_repo.git'
+            }
+        }
+        
+         stage("build-api"){
+            steps{
+                dir ("spring-boot-student-app-api"){
+                    // Run maven on a unix agent.
+                    sh "mvn package"
+                }
+            }
+        }
+        stage("build-client"){
+            steps{
+                dir ("react-student-management-web-app"){
+                    sh "docker build . -t huyn29/student-app-client"
+                }
+            }
+        }
+
+        stage("push-images"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'pwd', variable: 'dockerhub')]){
+                    sh 'docker login -u huyn29 -p ${dockerhub}'
+                    }
+                    sh 'docker push huyn29/student-app-api:0.0.1-SNAPSHOT'
+                    sh 'docker push huyn29/student-app-client:latest'
+                }
+            }
+        }
+
+        stage("deploy-app1"){
+            steps{
+                sh 'helm upgrade app1 helm/ --install'
+            }
+        }
+    }
+}

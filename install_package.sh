@@ -12,4 +12,4 @@ kubectl create namespace istio-system
 helm install istio-base istio/base -n istio-system
 helm install istiod istio/istiod -n istio-system --wait
 #helm show values istio/gateway |nano -
-helm install istio-ingress istio/gateway -f make_gw.yaml -n istio-system --wait
+#helm install istio-ingress istio/gateway -f make_gw.yaml -n istio-system --wait
