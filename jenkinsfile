@@ -35,10 +35,34 @@ pipeline{
                 }
             }
         }
-
+        stage("add repo"){
+            steps{
+                sh 'helm repo add prometheus-community https://prometheus-community.github.io/helm-charts'
+                sh 'helm repo add bitnami https://charts.bitnami.com/bitnami'
+                sh 'helm repo ls'
+            }
+        }
         stage("deploy-app1"){
             steps{
                 sh 'helm upgrade app1 helm/ --install'
+            }
+        }
+
+        stage("install prometheus"){
+            steps{
+                sh 'helm upgrade prometheus prometheus-community/prometheus -n istio-system --install'
+                sh 'kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np'
+                //sh 'minikube service prometheus-server-np'
+            }
+        }
+
+        stage("install grafana"){
+            steps{
+                sh 'helm upgrade grafana bitnami/grafana -f huyn29.yaml -n istio-system --install'
+                sh 'kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np'
+                //echo "User: admin"
+                //echo "Password: $(kubectl get secret grafana-admin --namespace default -o jsonpath="{.data.GF_SECURITY_ADMIN_PASSWORD}" | base64 -d)"
+                //sh 'minikube service grafana-np'
             }
         }
     }

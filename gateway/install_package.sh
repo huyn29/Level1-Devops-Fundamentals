@@ -9,7 +9,8 @@ helm repo add istio https://istio-release.storage.googleapis.com/charts
 helm repo update
 
 kubectl create namespace istio-system
-helm install istio-base istio/base -n istio-system
-helm install istiod istio/istiod -n istio-system --wait
+helm upgrade istio-base istio/base -n istio-system --install
+helm upgrade istiod istio/istiod -n istio-system --wait --install
 #helm show values istio/gateway |nano -
-#helm install istio-ingress istio/gateway -f make_gw.yaml -n istio-system --wait
+helm install istio-ingress istio/gateway -f make_gw.yaml -n istio-system --wait
+kubectl apply -f istio-ingressgateway.yaml
