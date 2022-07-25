@@ -12,8 +12,12 @@ The first, we must install all sofware to use:
 - [Helm](https://github.com/huyn29/install_repo/blob/master/helm.sh)
 - [Jenkins & maven](https://github.com/huyn29/install_repo/blob/master/jenkins.sh)
 
-We can run all command in repo or create bash file and run it by `bash ./bash_filename`
+We can run all command in repo or create bash file and run it by `bash ./bash_filename`.
 Before deploy app, we need install istio and configuring components of istio. we just run bash file in gateway directory. we can run by command:
 ```console
 bash ./install_package.sh
+```
+Finnally, we need apply istio-ingressgateway to config gateway and virtual service:
+```console
+kubectl apply -f istio-ingressgateway.yaml
 ```
