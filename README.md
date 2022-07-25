@@ -1,6 +1,5 @@
+#<p align="center"> Kubernetes full stack example </p>
 
-![](https://avatars.githubusercontent.com/u/6412038?s=280&v=4)
-# Kubernetes full stack example
 [Blog post](https://nirajsonawane.github.io/2020/04/25/Deploy-React-Spring-Boot-MongoDB-Fullstack-application-on-Kubernetes/) will help understand about example
 ## Create instance
 Create a intance has option:
@@ -25,9 +24,11 @@ kubectl apply -f istio-ingressgateway.yaml
 ```
 ## Cicd with jenkins
 - Acess to local host to get permission user jenkins can use docker
+```
+sudo usermod -aG docker jenkins
+```
 - Install plugin kubernetes
-- Connect to kubernetes cluster:
- - Acess to local host to coppy and get permission for user jenkins:
+- Connect to kubernetes cluster: Acess to local host to coppy and get permission for user jenkins:
 ```
 sudo cp -r .kube/ .minikube/ /var/lib/jenkins
 sudo chown -R jenkins /var/lib/jenkins/.minikube/ /var/lib/jenkins/.kube/
@@ -36,4 +37,6 @@ sudo nano /var/lib/jenkins/.kube/config
 ```
 - Test connect with kubernetes cluster: manage jenkins/ manage nodes and clouds -> select kubernetes -> test connect
 - Create a job pipeline:choose GitHub hook trigger for GITScm polling and pipeline script from SCM
+## Result
 ![image](https://user-images.githubusercontent.com/99779691/180826662-ece02a0d-87d4-4052-a260-2664d08cdb6e.png)
+<p align="center">student app</p>
