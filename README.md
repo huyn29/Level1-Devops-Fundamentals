@@ -36,3 +36,4 @@ sudo nano /var/lib/jenkins/.kube/config
 ```
 - Test connect with kubernetes cluster: manage jenkins/ manage nodes and clouds -> select kubernetes -> test connect
 - Create a job pipeline:choose GitHub hook trigger for GITScm polling and pipeline script from SCM
+![image](https://user-images.githubusercontent.com/99779691/180826662-ece02a0d-87d4-4052-a260-2664d08cdb6e.png)
