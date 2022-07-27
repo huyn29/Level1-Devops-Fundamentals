@@ -39,7 +39,11 @@ sudo nano /var/lib/jenkins/.kube/config
 "Change PATH: (/home/ubuntu/ -> /var/lib/jenkins/"
 ```
 Test connect with kubernetes cluster: manage jenkins/ manage nodes and clouds -> select kubernetes -> test connect
-- Create a job pipeline:choose GitHub hook trigger for GITScm polling and pipeline script from SCM
+- Create a job pipeline:
+ - choose GitHub hook trigger for GITScm polling
+![image](https://user-images.githubusercontent.com/99779691/181227455-1a978790-2ec0-4628-94fc-6ffc08cc8cd5.png)
+ - choose pipeline script from SCM and add your repo
+![image](https://user-images.githubusercontent.com/99779691/181228346-3c6d7e27-4ac5-42b5-8ac3-fcb3f5efb40b.png)
 ## Result
 ![image](https://user-images.githubusercontent.com/99779691/180826662-ece02a0d-87d4-4052-a260-2664d08cdb6e.png)
 <p align="center">student app</p>
