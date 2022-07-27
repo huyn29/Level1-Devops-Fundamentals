@@ -53,5 +53,4 @@ sudo nano /var/lib/jenkins/.kube/config
 ## Result
 ![image](https://user-images.githubusercontent.com/99779691/180826662-ece02a0d-87d4-4052-a260-2664d08cdb6e.png)
 <p align="center">student app</p>
-- Try change line 16 in kubernetes-full-stack-example/react-student-management-web-app/src/App.js and push to github anh check title of web
-
+- Try change line 16 in kubernetes-full-stack-example/react-student-management-web-app/src/App.js and push to github and check title of web

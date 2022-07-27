@@ -8,7 +8,7 @@ api:
 client:
   name: student-app-client
   count: 1
-  image: huyn29/student-app-client:1.0.5
+  image: huyn29/student-app-client:1.0.6
   port: 80
   targetPort: 80
 
