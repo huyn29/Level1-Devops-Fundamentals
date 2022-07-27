@@ -18,7 +18,7 @@ Before deploy app, we need install istio and configuring components of istio. we
 ```
 bash ./install_package.sh
 ```
-Finnally, we need apply istio-ingressgateway to config gateway and virtual service:
+Finnally, we need apply istio-ingressgateway to config gateway:
 ```
 kubectl apply -f istio-ingressgateway.yaml
 ```
@@ -28,14 +28,17 @@ kubectl apply -f istio-ingressgateway.yaml
 sudo usermod -aG docker jenkins
 ```
 - Install plugin kubernetes
-- Connect to kubernetes cluster: Acess to local host to coppy and get permission for user jenkins:
+- Connect jenkins to kubernetes cluster: Acess to local host to coppy 2 folder .minikube and .kube of your user.Get permission for user jenkins can use them:
 ```
 sudo cp -r .kube/ .minikube/ /var/lib/jenkins
-sudo chown -R jenkins /var/lib/jenkins/.minikube/ /var/lib/jenkins/.kube/
-sudo nano /var/lib/jenkins/.kube/config
-"Change PATH: (/home/ubuntu/ -> /var/lib/jenkins/" 
+sudo chown -R jenkins /var/lib/jenkins/.minikube/ /var/lib/jenkins/.kube/ 
 ```
-- Test connect with kubernetes cluster: manage jenkins/ manage nodes and clouds -> select kubernetes -> test connect
+Change the path in config of .kube folder in home folder jenkins
+```
+sudo nano /var/lib/jenkins/.kube/config
+"Change PATH: (/home/ubuntu/ -> /var/lib/jenkins/"
+```
+Test connect with kubernetes cluster: manage jenkins/ manage nodes and clouds -> select kubernetes -> test connect
 - Create a job pipeline:choose GitHub hook trigger for GITScm polling and pipeline script from SCM
 ## Result
 ![image](https://user-images.githubusercontent.com/99779691/180826662-ece02a0d-87d4-4052-a260-2664d08cdb6e.png)
