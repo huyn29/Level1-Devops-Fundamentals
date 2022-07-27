@@ -2,7 +2,7 @@ minikube start --driver=none --kubernetes-version v1.23.8
 minikube addons enable ingress
 
 #add lable for default namespace
-kubectl label namespace default istio-injection=enabled
+kubectl label namespace default istio-injection=enabled --overwrite
 
 # install istio
 helm repo add istio https://istio-release.storage.googleapis.com/charts
