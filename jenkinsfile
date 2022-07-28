@@ -47,7 +47,7 @@ pipeline{
         stage("install istio"){
             steps{
                 dir ("gateway"){
-                    sh 'kubectl create namespace istio-system'
+                    //sh 'kubectl create namespace istio-system'
                     sh 'helm upgrade istio-base istio/base -n istio-system --install'
                     sh 'helm upgrade istiod istio/istiod -n istio-system --wait --install'
                     sh 'helm upgrade istio-ingress istio/gateway -f make_gw.yaml -n istio-system --wait --install'
