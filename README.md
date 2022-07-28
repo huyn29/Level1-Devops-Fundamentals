@@ -23,13 +23,13 @@ Finnally, we need apply istio-ingressgateway to config gateway:
 kubectl apply -f istio-ingressgateway.yaml
 ```
 ## Cicd with jenkins
-1. Acess to local host to get permission user jenkins can use docker
+1. Get permission user jenkins can use docker
 ```
 sudo usermod -aG docker jenkins
 ```
 2. Install plugin kubernetes
 3. Connect jenkins to kubernetes cluster: 
-- Acess to local host to coppy 2 folder .minikube and .kube of your user.Get permission for user jenkins can use them:
+- Coppy 2 folder .minikube and .kube of your user.Get permission for user jenkins can use them:
 ```
 sudo cp -r .kube/ .minikube/ /var/lib/jenkins
 sudo chown -R jenkins /var/lib/jenkins/.minikube/ /var/lib/jenkins/.kube/ 
@@ -39,11 +39,20 @@ sudo chown -R jenkins /var/lib/jenkins/.minikube/ /var/lib/jenkins/.kube/
 sudo nano /var/lib/jenkins/.kube/config
 "Change PATH: (/home/ubuntu/ -> /var/lib/jenkins/"
 ```
+![](https://user-images.githubusercontent.com/99779691/181583264-142d68bd-644b-45ce-88f6-bdfe0c4b731f.png)
+
 - Test connect with kubernetes cluster: manage jenkins/ manage nodes and clouds -> select kubernetes -> test connect
+![](https://user-images.githubusercontent.com/99779691/181583847-db09c6b3-46ec-42d2-af95-e4fcc8415bdf.png)
+
 4. Create a job pipeline:
-- Choose GitHub hook trigger for GITScm polling
-- Choose pipeline script from SCM and add your repo
-- Add github webhook
+- Choose GitHub hook trigger for GITScm polling: make trigger
+
+![](https://user-images.githubusercontent.com/99779691/181580121-e1076bec-1e67-4345-8fab-abcef740ee31.png)
+
+- Choose pipeline script from SCM and add your repo and Add github webhook: get soure code of jenkinsfile from your repo
+
+![](https://user-images.githubusercontent.com/99779691/181579973-63a4b25e-698f-43a5-807d-98666c6170c8.png)
+
 5. Create file jekinsfile uses these helm charts to: 
 - Deploy React application on Kubernetes
 - Deploy MongoDB persistance layer on Kubernetes
