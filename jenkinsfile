@@ -19,7 +19,7 @@ pipeline{
         stage("build-client"){
             steps{
                 dir ("react-student-management-web-app"){
-                    sh "docker build -t huyn29/student-app-client:1.0.9 ."
+                    sh "docker build -t huyn29/student-app-client:1.1.0 ."
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline{
                     sh 'docker login -u huyn29 -p ${dockerhub}'
                     }
                     sh 'docker push huyn29/student-app-api:0.0.1-SNAPSHOT'
-                    sh 'docker push huyn29/student-app-client:1.0.9'
+                    sh 'docker push huyn29/student-app-client:1.1.0'
                 }
             }
         }
